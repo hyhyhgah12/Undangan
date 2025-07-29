@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Undangan Pernikahan - Rama & Annisa</title>
+
+  <!-- Font dan Style -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #3b2f2f;
+      background-image: url('https://www.transparenttextures.com/patterns/golden-wallpaper.png');
+      background-color: #fff9ef;
+      text-align: center;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+      url('https://i.ibb.co/YbgScMN/melayu-pattern.jpg') center/cover no-repeat;
+      color: #fffbe0;
+      padding: 150px 20px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    }
+
+    .hero-content h1 {
+      font-size: 4rem;
+      color: gold;
+    }
+
+    section {
+      padding: 60px 20px;
+    }
+
+    .countdown-section {
+      background-color: #efe1c6;
+    }
+
+    .countdown-timer {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .countdown-timer div {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      min-width: 100px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .btn {
+      background-color: #a9743d;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    footer {
+      background-color: #2c1f0d;
+      color: white;
+      padding: 30px 20px;
+    }
+
+    audio {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Musik Latar -->
+  <audio autoplay loop controls hidden>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung audio.
+  </audio>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-content">
+      <h4 style="font-weight:400;">Dengan penuh hormat kami mengundang</h4>
+      <h1>Rama & Annisa</h1>
+      <p>Pernikahan dalam Nuansa Adat Melayu</p>
+      <p><strong>Sabtu, 14 Februari 2026</strong></p>
+    </div>
+  </header>
+
+  <!-- Countdown -->
+  <section class="countdown-section">
+    <h2>Menuju Hari Bahagia</h2>
+    <div id="countdown" class="countdown-timer">
+      <div><span id="days">00</span><br>Hari</div>
+      <div><span id="hours">00</span><br>Jam</div>
+      <div><span id="minutes">00</span><br>Menit</div>
+      <div><span id="seconds">00</span><br>Detik</div>
+    </div>
+  </section>
+
+  <!-- Detail Acara -->
+  <section>
+    <h2>Detail Acara</h2>
+    <p><strong>Akad:</strong> 09.00 WIB di Masjid Istiqlal, Jakarta</p>
+    <p><strong>Resepsi:</strong> 18.00 WIB di Balai Kartini, Jakarta</p>
+    <a href="https://maps.google.com" target="_blank" class="btn">Lihat Lokasi</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Terima kasih atas doa restu Anda.</p>
+    <p><strong>Rama & Annisa</strong></p>
+  </footer>
+
+  <!-- Script Countdown -->
+  <script>
+    const weddingDate = new Date(2026, 1, 14, 9, 0, 0).getTime();
+
+    const countdownFunction = setInterval(function () {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      if (distance < 0) {
+        clearInterval(countdownFunction);
+        document.getElementById("countdown").innerHTML = "<h3>Acara Telah Dimulai!</h3>";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = String(days).padStart(2, '0');
+      document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+      document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+      document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+    }, 1000);
+  </script>
+</body>
+</html>
